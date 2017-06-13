@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <title>Artemis</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <!-- Styles -->
+    <!-- Bootstrap -->
+    <link href="/static/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600|Cinzel' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+    <!-- Custom styles for this page -->
+    <link rel="stylesheet" href="/static/css/custom-main.css">
+    <link rel="stylesheet" href="/static/css/custom-responsive.css">
+    <script type="text/javascript" src="/static/js/lib/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="/static/js/lib/handlebars-v4.0.10.js"></script>
+    <script type="text/javascript" src="/static/js/client/handlebar_helpers.js"></script>
+</head>
+<body>
+    <div id="div_header">
+        <div id="header_logo"></div>
+    </div>
+    <div id="div_content">
+        {{> welcome}}
+        {{> itinerary}}
+    </div>
+    <div id="div_footer"></div>
+    <script type="text/javascript" src="/static/js/client/client.js"></script>
+</body>
+</html>
