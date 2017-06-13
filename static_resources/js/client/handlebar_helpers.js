@@ -1,19 +1,43 @@
-Handlebars.registerHelper('getWelcomeTaglines', function() {
-    console.log("Inside htagbs helper");
-    var welcomeTaglines = [
-        "Discover your itinerary",
-        "Let’s get going",
-        "Extraordinary Places to Stay, Things to Do"
-    ];
+'use strict';
+// http://www.codyrushing.com/using-handlebars-helpers-on-both-client-and-server/
+var register = function(hbs, $) {
+    var helpers = {
+        getPartialByName: function(name, data, options) {
+            var template = Handlebars.partials[name];
+            if (template) {
+                if (typeof template !== 'function') {
+                    template = Handlebars.compile(template);
+                }
+                return template(data, options);
+            }
+        }
+    };
 
-    return "hello";
-/*
-    var index = 0;
-    setInterval(function() {
-        //$("#hdr_taglineStatic").text(welcomeTaglines[index++]);
-        var txt = welcomeTaglines[index++];
-        if (index == welcomeTaglines.length) { index = 0 }
-        return txt;
-    }, 1500);
-    */
-});
+    if (hbs && typeof hbs.registerHelper === "function") {
+        console.log("hbs exists");
+        // register helpers
+        for (var prop in helpers) {
+            hbs.registerHelper(prop, helpers[prop]);
+        }
+    } else {
+        console.log("server no hbs");
+        // just return helpers object if we can't register helpers here
+        return helpers;
+    }
+
+};
+
+// client
+if (typeof window !== "undefined") {
+    console.log("client");
+    // since all partials and templates precompiled into the same bucket, do this to allow partial lookups to work
+    // Only necessary for precompiled templates using grunt etc
+    // hbs.partials = hbs.templates;
+    register(Handlebars, $);
+}
+// server
+else {
+    console.log("server");
+    module.exports.register = register;
+    module.exports.helpers = register(null, null);
+}

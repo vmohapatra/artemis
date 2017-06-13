@@ -14,16 +14,16 @@
     <link rel="stylesheet" href="/static/css/custom-main.css">
     <link rel="stylesheet" href="/static/css/custom-responsive.css">
     <script type="text/javascript" src="/static/js/lib/jquery-1.12.0.min.js"></script>
-    <script type="text/javascript" src="/static/js/lib/handlebars-v4.0.10.js"></script>
+    <script type="text/javascript" src="/static/js/lib/handlebars.runtime-v4.0.10.js"></script>
     <script type="text/javascript" src="/static/js/client/handlebar_helpers.js"></script>
+    <!-- This is a layout-->
 </head>
 <body>
     <div id="div_header">
         <div id="header_logo"></div>
     </div>
     <div id="div_content">
-        {{> welcome}}
-        {{> itinerary}}
+        {{{body}}}
     </div>
     <div id="div_footer"></div>
     <script type="text/javascript" src="/static/js/client/client.js"></script>

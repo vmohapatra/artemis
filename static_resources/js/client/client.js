@@ -4,19 +4,22 @@ $(document).ready(function(){
         Utility functions
     *******************************************************/
 
+    // Utility function to set a dynamic tagline
     function getWelcomeTagline() {
-      var welcomeTaglines = [
-          "Discover your itinerary",
-          "Let’s get going",
-          "Extraordinary Places to Stay, Things to Do"
-      ];
+        var welcomeTaglines = [
+            "Let’s get going",
+            "Discover your itinerary",
+            "Amazing Places to Stay",
+            "Things to do"
+        ];
 
-      var index = 0;
-      setInterval(function() {
-        $("#hdr_taglineStatic").text(welcomeTaglines[index++]);
-        if (index == arr.length) { index = 0 }
-      }, 1500);
-    };
+        var index = 0;
+        setInterval(function() {
+            $("#hdr_taglineStatic").text(welcomeTaglines[index++]);
+            if (index == welcomeTaglines.length) { index = 0 }
+        }, 2000);
+    }
+    getWelcomeTagline();
     /*******************************************************
         Event Handlers
     *******************************************************/
