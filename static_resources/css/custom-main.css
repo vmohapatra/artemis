@@ -6,6 +6,16 @@ body {
     font-family: 'Open Sans', sans-serif;
     background-color: #555;
     color: #fff;
+    /*overflow-y: hidden;*/
+}
+input {
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family: Century Gothic;
+    font-size: 0.85em;
+    text-align:center;
+    color: #000000;
 }
 /*******************************
 HEADER
@@ -75,12 +85,45 @@ GENERIC ELEMENTS
     /*
     background-image: url("https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCc5pRzrMHn-2iOeAPzzAkJH3J--alkJvg&center=40,10&zoom=2&format=png&maptype=roadmap&style=element:geometry%7Ccolor:0xebe3cd&style=element:labels.text.fill%7Ccolor:0x523735&style=element:labels.text.stroke%7Ccolor:0xf5f1e6&style=feature:administrative%7Celement:geometry.stroke%7Ccolor:0xc9b2a6&style=feature:administrative.land_parcel%7Celement:geometry.stroke%7Ccolor:0xdcd2be&style=feature:administrative.land_parcel%7Celement:labels.text.fill%7Ccolor:0xae9e90&style=feature:landscape.natural%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:poi%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:poi%7Celement:labels.text.fill%7Ccolor:0x93817c&style=feature:poi.park%7Celement:geometry.fill%7Ccolor:0xa5b076&style=feature:poi.park%7Celement:labels.text.fill%7Ccolor:0x447530&style=feature:road%7Celement:geometry%7Ccolor:0xf5f1e6&style=feature:road.arterial%7Celement:geometry%7Ccolor:0xfdfcf8&style=feature:road.highway%7Celement:geometry%7Ccolor:0xf8c967&style=feature:road.highway%7Celement:geometry.stroke%7Ccolor:0xe9bc62&style=feature:road.highway.controlled_access%7Celement:geometry%7Ccolor:0xe98d58&style=feature:road.highway.controlled_access%7Celement:geometry.stroke%7Ccolor:0xdb8555&style=feature:road.local%7Celement:labels.text.fill%7Ccolor:0x806b63&style=feature:transit.line%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:transit.line%7Celement:labels.text.fill%7Ccolor:0x8f7d77&style=feature:transit.line%7Celement:labels.text.stroke%7Ccolor:0xebe3cd&style=feature:transit.station%7Celement:geometry%7Ccolor:0xdfd2ae&style=feature:water%7Celement:geometry.fill%7Ccolor:0xb9d3c2&style=feature:water%7Celement:labels.text.fill%7Ccolor:0x92998d&size=1024x768");
     */
-    background-image: url("/static/images/snazzy-image.png");
+    background-image: url("/static/images/snazzy-image-2.png");
     background-size:cover;
     background-position: center;
-    padding: 25%;
+    height: 100vh;/*viewport height*/
+    text-align: center;
+    padding-left: 20%;
+    padding-right: 20%;
 }
-
+#divcontentContainer:before {
+    content: '\200B';
+    display: inline-block;
+    height: 100%; 
+    vertical-align: middle;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+#div_searchWizardContainer {
+    background: rgba(0, 0, 0, 0.72) none repeat scroll 0 0 padding-box;
+    border-radius: 0.352941em;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.5);
+    margin-top: 15vh;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+#div_destinationInputContainer {
+    box-sizing: border-box;
+}
+#ip_destination {
+    width: 100%;
+}
+.datepicker {
+    width: 75%;
+}
+.rowpadding {
+    padding: 2% 2% 0 2%;
+    display: inline-block;
+}
 /*******************************
 GAME PAGE FOOTER
 *******************************/
