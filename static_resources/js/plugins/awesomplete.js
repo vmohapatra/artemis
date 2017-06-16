@@ -260,9 +260,8 @@ _.prototype = {
                 $.fire(this.input, "awesomplete-selectcomplete", {
                     text: suggestion
                 });
-                // Passing the selected suggestion data via callback
+                // vmohapatra : Passing the selected suggestion data via callback
                 if(this.opts.selectionCallback) { 
-                    console.log(this.opts.selectionCallback);
                     if (typeof this.opts.selectionCallback == 'function') {
                         this.opts.selectionCallback(suggestion.data);
                     } else if (typeof this.opts.selectioncallback == 'string') {
