@@ -92,6 +92,7 @@ GENERIC ELEMENTS
     text-align: center;
     padding-left: 20%;
     padding-right: 20%;
+    min-width: 265px;
 }
 #divcontentContainer:before {
     content: '\200B';
@@ -111,6 +112,14 @@ GENERIC ELEMENTS
     padding-left: 10%;
     padding-right: 10%;
 }
+#div_errorSubmit {
+    display: none;
+    border: 1px solid #f00;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    padding: 5px;
+}
 #div_destinationInputContainer {
     box-sizing: border-box;
 }
@@ -123,6 +132,19 @@ GENERIC ELEMENTS
 .rowpadding {
     padding: 2% 2% 0 2%;
     display: inline-block;
+}
+.affinity-container {
+    display: inline-block;
+    font-size: 0.75em;
+}
+#div_itinSearchFormSubmitContainer {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.search-button {
+    background-color: #D6AC0A;
+    border: 0;
+    padding: 10px;
 }
 /*******************************
 GAME PAGE FOOTER

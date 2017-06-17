@@ -22,7 +22,7 @@ var _ = function (input, o) {
     o = o || {};
 
     configure(this, {
-        minChars: 2,
+        minChars: 1,
         maxItems: 10,
         autoFirst: false,
         data: _.DATA,

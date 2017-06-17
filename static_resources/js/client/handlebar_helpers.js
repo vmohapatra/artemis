@@ -3,12 +3,23 @@
 var register = function(hbs, $) {
     var helpers = {
         getPartialByName: function(name, data, options) {
-            var template = Handlebars.partials[name];
+            var template = Handlebars.partials[name] || Handlebars.templates[name];
             if (template) {
                 if (typeof template !== 'function') {
                     template = Handlebars.compile(template);
                 }
                 return template(data, options);
+            }
+        },
+        customVijaya: function(data) {
+        //{{customVijaya sortedAffinities}} in hbs
+            console.log("customVijaya function is called whenever the view is rendered");
+            if (typeof window !== "undefined") {
+                console.log("rendered from client");
+                return data;
+            }
+            else {
+                console.log("rendered from server");
             }
         }
     };

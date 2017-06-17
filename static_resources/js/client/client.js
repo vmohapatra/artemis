@@ -1,3 +1,5 @@
+/* global Handlebars */
+
 $(document).ready(function(){
     /*******************************************************
         Utility functions
@@ -7,6 +9,7 @@ $(document).ready(function(){
     function selectionCallback(data) {
         console.log("Typeahead selection happened and we got this back");
         console.log(data);
+        $("#ip_selectedDestinationData").val(JSON.stringify(data));
         getAffinityTags(data.rids);
         //endorsementRankedAffinity();
     }
@@ -29,8 +32,11 @@ $(document).ready(function(){
         console.log(endorsementAffinities);
         var uniqueAffinities = removeDuplicates(endorsementAffinities, "theme", "endorsement");
         var sortedAffinities = uniqueAffinities;
-        console.log(sortedAffinities.sort(dynamicSort("-endorsement")));
-        
+        sortedAffinities.sort(dynamicSort("-endorsement"))
+        console.log(sortedAffinities);
+        //Pass the sorted affinities to the affinities template
+        $("#div_affinities_container").html(Handlebars.templates.affinities({sortedAffinities: sortedAffinities}));
+
     }
 
     var rid_affinity_mapping = {
@@ -172,6 +178,66 @@ $(document).ready(function(){
                   }
     }
 
+    // https://confluence/pages/viewpage.action?pageId=471953755
+    var affinity_filter_mapping = {
+        "Water Activities" : ["Tropical", "Surfing", "Snorkeling", "Coral Reefs", "Lakes", "Beaches", "Sea", "Rivers", "Marinas", "Islands" ],
+        "Theme Parks" : ["Theme Parks", "Parks", "Rain Forests", "Jungles"],
+        "Family Friendly" : ["Theaters", "Relaxing", "Shopping", "Culture", "Temples", "Castles"],
+        "Tours & Sightseeing" : ["Opera Houses", "Gardens", "Ruins", "Architecture", "Monuments", "Public Transport", "Parks", "Rain Forests", "Jungles"],
+        "Attractions" : ["Museums", "Aquariums", "Ports", "Volcanoes",  "Temples", "Castles", "Monuments"],
+        "Nightlife" : ["Entertainment", "Dancing", "Romantic", "Urban", "Opera Houses"],
+        "Adventures" : ["Golf", "Volcanoes", "Rain Forests"],
+        "Food & Drink" : ["Romantic", "Luxury", "Cafes", "Shopping", "Culture"],
+        "Spa" : ["Luxury", "Relaxing", "Shopping"]
+    }
+
+/*
+        
+        
+        "Theme Parks" : "",//-----------
+        "Theaters" : "",//-----------
+        "Luxury" : "",//-----------
+        "Golf" : "",//-----------
+        "Lakes" : "",//-----------
+        "Beaches" : "",//-----------
+        "Surfing" : "",//-----------
+        "Snorkeling" : "",//-----------
+        "Sea" : "",//-----------
+        "Islands" : "",//-----------
+        "Ports" : "",//-----------
+        "Volcanoes" : "",//-----------
+        "Relaxing" : "",//-----------
+        "Ruins" : "",//-----------
+        "Cafes" : "",//-----------
+        "Museums" : "",//-----------
+        "Architecture" : "",//-----------
+        "Monuments" : "",//-----------
+        "Public Transport" : "",//-----------
+        "Shopping" : "",//-----------
+        "Rivers" : "",//-----------
+        "Marinas" : "",//-----------
+        "Parks" : "",//-----------
+        "Culture" : "",//-----------
+        "Coral Reefs" : "",//-----------
+        "Rain Forests" : "",//-----------
+        "Jungles" : "",//-----------
+        "Tropical" : "",//-----------
+        "Urban" : "",//-----------
+        "Shopping" : "",//-----------
+        "Art" : "",
+        "Opera Houses" : "",//-----------
+        "Ferries" : "",//-----------
+        "Temples" : "",//-----------
+        "Castles" : "",//-----------
+        "Aquariums" : "",//-----------
+        "Entertainment" : "",//-----------
+        "Romantic" : "",//-----------
+        "Gardens" : "",//-----------
+        "Historical" : "",
+        "Festivals" : "",
+        "Dancing" : ""//-----------
+
+*/
     function endorsementAffinity(rid) {
         var affinityForRids = [];
         for(affinity in rid_affinity_mapping[rid]) {
@@ -194,24 +260,20 @@ $(document).ready(function(){
             value = originalArray[i][objKey];
 
             if(values.indexOf(value) === -1) {
-                console.log(value+" does not exist in trimmed array");
                 // if the key does not exists
                 trimmedArray.push(originalArray[i]);
                 values.push(value);
             }
             else {
-                console.log(value+" exists in trimmed array");
                 // if the key already exists, update the endorsement to max number
                 $.each(trimmedArray, function() {
                     if (this.theme == value && parseInt(this.endorsement) < parseInt(originalArray[i][maxKey]) ) {
-                        //console.log("Changed endorsement for "+value+" from : "+this.endorsement+ "to : "+originalArray[i]["endorsement"]);
                         this.endorsement = originalArray[i][maxKey];
                     }
                 });
             }
         }
 
-        console.log( trimmedArray);
         return trimmedArray;
 
     }
@@ -231,6 +293,14 @@ $(document).ready(function(){
         }
     }
 
+    function createPlanUrl() {
+        // https://www.expedia.com/lx/api/search?
+        // rid=1488&startDate=2017-06-18&endDate=2017-06-24&categories=Water+Activities
+        var selectedDestData = JSON.parse($("#ip_selectedDestinationData").val());
+        var startDate = $("#div_startDatepicker").val();
+        var endDate = $("#div_startDatepicker").val();
+        var affinityString = "";
+    }
     /*******************************************************
         IIFEs
     *******************************************************/
@@ -250,13 +320,7 @@ $(document).ready(function(){
         }, 2000);
     })();
 
-    // IIFE : Function to set the autocomplete suggestion data at page load
-    (function setSuggestions() {
-        var input = document.getElementById("ip_destination");
-
-        // Show label but insert value into the input:
-        new Awesomplete(input, {
-            list: [
+    var suggestions = [
                 {
                     label: "Orlando, Florida, USA", // Multicity
                     value: "Orlando, Florida, United States of America",
@@ -348,8 +412,15 @@ $(document).ready(function(){
                         { lat:"55.951370", lng:"-3.196380"},
                         { lat: "55.861180", lng: "-4.250200"}
                     ]
-                },
-            ],
+                }
+    ];
+    // IIFE : Function to set the autocomplete suggestion data at page load
+    (function setSuggestions() {
+        var input = document.getElementById("ip_destination");
+
+        // Show label but insert value into the input:
+        new Awesomplete(input, {
+            list: suggestions,
             options: {
                 selectionCallback : selectionCallback
             }
@@ -359,6 +430,31 @@ $(document).ready(function(){
     /*******************************************************
         Event Handlers
     *******************************************************/
+    $('#ip_destination').on('input', function() {
+        $("#ip_selectedDestinationData").val("");
+    }).trigger('input');
 
+    $("#btn_itinSearchSubmit").on("click", function(e) {
+        console.log("submit clicked");
+
+        var destIp = $("#ip_destination").val();
+        var selectedDestData = $("#ip_selectedDestinationData").val();
+        if(destIp && $("#div_startDatepicker").val() && $("#div_endDatepicker").val()) {
+            // Finds the suggestion based on text ip string match 
+            var destination = $.grep(suggestions, function(e){ var destinationName = e.value; return (destinationName.indexOf(destIp) > -1); });
+            if(!destination[0] || (selectedDestData && destination[0].value != JSON.parse(selectedDestData).value) ) {
+               $("#ip_destination").val("");
+               $("#ip_selectedDestinationData").val("");
+               $("#div_errorSubmit").show();
+            }
+            else {
+                $("#ip_selectedDestinationData").val(JSON.stringify(destination[0]));
+                // Valid search submit : create URl
+            }
+        }
+        else {
+            $("#div_errorSubmit").show();
+        }
+    });
 
 });

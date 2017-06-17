@@ -12,15 +12,19 @@
         <!-- Content Container <section>-->
         <div id="div_contentContainer" class="container-fluid">
             <div id="div_searchWizardContainer">
+                <div id="div_errorSubmit">Please provide dates & a select a destination from shown suggestions</div>
                 <form id="form_search_plan">
-                    <div id="div_destination_suggestions">
+                    <div id="div_destinationSuggestions">
                         <div id="div_destinationInputContainer" class="">
                             <link href="/static/css/plugins/awesomplete.css" rel="stylesheet">
                             <script type="text/javascript" src="/static/js/plugins/awesomplete.js"></script>
                             <input type="text" id="ip_destination" class="awesomplete" placeholder="Enter destination" />
                         </div>
+                        <input type="hidden" id="ip_selectedDestinationData" value=""/>
                     </div>
+                    <div id="div_affinities_container" class="row">
                     {{> affinities}}
+                    </div>
                     <div id="div_calendarContainer">
                         <div class="rowpadding">
                             <input type="text" id="div_startDatepicker" class="datepicker " placeholder="MM / DD / YYYY"/>
@@ -29,7 +33,11 @@
                             <input type="text" id="div_endDatepicker" class="datepicker" placeholder="MM / DD / YYYY"/>
                         </div>
                     </div>
+                    <div id="div_itinSearchFormSubmitContainer">
+                        <button id="btn_itinSearchSubmit" type="button" class="search-button">Plan my trip</button>
+                    </div>
                 </form>
+
             </div>
         </div>
         <!-- Footer Container <footer>-->
