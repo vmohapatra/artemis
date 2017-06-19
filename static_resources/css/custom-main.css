@@ -137,6 +137,9 @@ GENERIC ELEMENTS
     display: inline-block;
     font-size: 0.75em;
 }
+.affinity-ip {
+    vertical-align: text-bottom;
+}
 #div_itinSearchFormSubmitContainer {
     margin-top: 1em;
     margin-bottom: 1em;
