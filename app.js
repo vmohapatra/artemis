@@ -79,7 +79,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get('/', exposeTemplates, function (req, res) {
+    console.log("in /");
+    res.redirect('/welcome');
+});
+
+app.get('/welcome', exposeTemplates, function (req, res) {
+    console.log("in welcome view");
     res.render('welcome');
+});
+
+app.get('/itinerary', function (req, res) {
+    console.log("In itin view Vijaya");
+    res.render('itinerary');
+});
+
+app.post('/itinerary', function (req, res) {
+    console.log("received post to redirect"); 
+    res.redirect('/itinerary');
 });
 
 app.listen(config.http_port, function () {

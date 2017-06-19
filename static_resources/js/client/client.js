@@ -121,7 +121,7 @@ $(document).ready(function(){
                       "Shopping": {"endorsement" : "630" }
                   },
         //Tokyo
-        "178312" : { 
+        "179900" : { 
                       "Temples": {"endorsement" : "138" },
                       "Museums": {"endorsement" : "236" },
                       "Urban": {"endorsement" : "7" },
@@ -299,18 +299,39 @@ $(document).ready(function(){
         var selectedDestData = JSON.parse($("#ip_selectedDestinationData").val());
         var startDate = $("#div_startDatepicker").val();
         var endDate = $("#div_startDatepicker").val();
-        var affinityString = "";
+        var selectedAffinities = [];
+        $('.affinity-ip').each(function (index, value) { 
+            if( $(this).is(':checked') ) {
+                console.log('input' + index + ':' + $(this).attr('data'));
+                var affinity = $(this).attr('data');
+                //Get corresponding activity filter
+                $.each(affinity_filter_mapping, function(key, value) {
+                //console.log(key);
+                //console.log(value);
+                   if( _.contains(value, affinity)) {
+                       console.log("************");
+                       console.log(key);
+                       if(!_.contains(selectedAffinities, key)) {
+                           selectedAffinities.push(key);
+                        }
+                   }
+                });
+            }
+        });
+        console.log(selectedAffinities);
+        // Currently destination or multi region ids are not supported.
+        // get activities for each region and create a ranked mapping
     }
     /*******************************************************
         IIFEs
     *******************************************************/
+    if(document.getElementById("hdr_taglineStatic")) {
     // IIFE : Function to set a dynamic tagline at page load
     (function getWelcomeTagline() {
         var welcomeTaglines = [
             "Let’s get going",
             "Discover your itinerary",
-            "Amazing Places to Stay",
-            "Things to do"
+            "Things you want to do"
         ];
 
         var index = 0;
@@ -319,6 +340,7 @@ $(document).ready(function(){
             if (index == welcomeTaglines.length) { index = 0 }
         }, 2000);
     })();
+    }
 
     var suggestions = [
                 {
@@ -414,6 +436,7 @@ $(document).ready(function(){
                     ]
                 }
     ];
+    if(document.getElementById("ip_destination")) {
     // IIFE : Function to set the autocomplete suggestion data at page load
     (function setSuggestions() {
         var input = document.getElementById("ip_destination");
@@ -426,6 +449,7 @@ $(document).ready(function(){
             }
         });
     })();
+    }
 
     /*******************************************************
         Event Handlers
@@ -438,8 +462,10 @@ $(document).ready(function(){
         console.log("submit clicked");
 
         var destIp = $("#ip_destination").val();
+        var startDate = $("#div_startDatepicker").val();
+        var endDate = $("#div_endDatepicker").val();
         var selectedDestData = $("#ip_selectedDestinationData").val();
-        if(destIp && $("#div_startDatepicker").val() && $("#div_endDatepicker").val()) {
+        if(destIp && startDate && endDate) {
             // Finds the suggestion based on text ip string match 
             var destination = $.grep(suggestions, function(e){ var destinationName = e.value; return (destinationName.indexOf(destIp) > -1); });
             if(!destination[0] || (selectedDestData && destination[0].value != JSON.parse(selectedDestData).value) ) {
@@ -448,8 +474,20 @@ $(document).ready(function(){
                $("#div_errorSubmit").show();
             }
             else {
+                $("#div_errorSubmit").hide();
                 $("#ip_selectedDestinationData").val(JSON.stringify(destination[0]));
-                // Valid search submit : create URl
+                var nextUrl = createPlanUrl();
+
+                //Go to itinerary view
+                $.ajax({
+                    type: "POST",
+                    url: "/itinerary",
+                    data: {"Helloe" : "Vijaya"}
+                })
+                .done(function(d){console.log(d);window.location.href = "/itinerary";})
+                .fail(function(e){console.log(e);console.log('POST fail');})
+                .always(function(){});
+
             }
         }
         else {
