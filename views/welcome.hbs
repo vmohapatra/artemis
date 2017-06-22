@@ -27,10 +27,10 @@
                     </div>
                     <div id="div_calendarContainer">
                         <div class="rowpadding">
-                            <input type="text" id="div_startDatepicker" class="datepicker " placeholder="MM / DD / YYYY"/>
+                            <input type="text" id="div_startDatepicker" class="datepicker " placeholder="MM-DD-YYYY"/>
                         </div>
                         <div class="rowpadding">
-                            <input type="text" id="div_endDatepicker" class="datepicker" placeholder="MM / DD / YYYY"/>
+                            <input type="text" id="div_endDatepicker" class="datepicker" placeholder="MM-DD-YYYY"/>
                         </div>
                     </div>
                     <div id="div_itinSearchFormSubmitContainer">
@@ -45,26 +45,25 @@
             <!-- Fixed Footer -->
         </div>
     <link href="/static/css/plugins/pikaday.css" rel="stylesheet">
-    <script type="text/javascript" src="/static/js/lib/moment.min.js"></script>
     <script type="text/javascript" src="/static/js/plugins/pikaday.min.js"></script>
     <script type="text/javascript">
-        var startpicker = new Pikaday({
-             field: document.getElementById('div_startDatepicker'),
-             position: 'bottom right',
-             reposition: false,
-             format: 'MM/DD/YYYY',
-             onSelect: function() {
-                console.log(this.getMoment().format('MM/DD/YYYY'));
-             }
-        });
-        var endpicker = new Pikaday({
-             field: document.getElementById('div_endDatepicker'),
-             format: 'MM/DD/YYYY',
-             position: 'bottom left',
-             reposition: false,
-             onSelect: function() {
-                console.log(this.getMoment().format('MM/DD/YYYY'));
-             }
-        });
+            var startpicker = new Pikaday({
+                 field: document.getElementById('div_startDatepicker'),
+                 position: 'bottom right',
+                 reposition: false,
+                 format: 'YYYY-MM-DD',//MM/DD/YYYY
+                 onSelect: function() {
+                    console.log(this.getMoment().format('YYYY-MM-DD'));
+                 }
+            });
+            var endpicker = new Pikaday({
+                 field: document.getElementById('div_endDatepicker'),
+                 format: 'YYYY-MM-DD',
+                 position: 'bottom left',
+                 reposition: false,
+                 onSelect: function() {
+                    console.log(this.getMoment().format('YYYY-MM-DD'));
+                }
+            });
     </script>
     </div>

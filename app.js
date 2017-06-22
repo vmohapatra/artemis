@@ -88,14 +88,16 @@ app.get('/welcome', exposeTemplates, function (req, res) {
     res.render('welcome');
 });
 
-app.get('/itinerary', function (req, res) {
-    console.log("In itin view Vijaya");
+app.get('/itinerary', exposeTemplates, function (req, res) {
+    console.log("In itin get");
     res.render('itinerary');
 });
 
+
 app.post('/itinerary', function (req, res) {
     console.log("received post to redirect"); 
-    res.redirect('/itinerary');
+    console.log(JSON.stringify(req.body));
+    res.send(req.body);
 });
 
 app.listen(config.http_port, function () {

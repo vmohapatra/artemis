@@ -4,25 +4,83 @@ ONE COLUMN
 @media screen and (min-width: 100px) {
     #div_contentContainer {
     }
-    
-    #div_resultsContentContainer {
-        padding-top:100px;
-        padding-bottom:65px;
+    #div_headerContentContainer {
+        padding-left: 0.5em;
+        padding-right: 0.5em;
     }
-    
+    #div_headerContentContainer, #div_navBtnContainer {
+    }
+    #div_bkBtn, #div_itinHdrTxt {
+    min-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    }
+    #div_backToSearchIcon {
+    margin: 14px 0 0 -9px;
+    }
+    #hdr_resultsFixed {
+        font-size: 1.5em;
+    }
+    .sub-destination h3 {
+    font-size: 1em;
+    }
+    #div_itinResultsContainer {
+        padding-top:130px;
+        padding-bottom:65px;
+        padding-left: 1em;
+        padding-right:1em;
+    }
+    #div_activitiesContainer>.timeline>li {
+        margin-bottom: 2em;
+        min-height: 50px;
+    }
+    #div_activitiesContainer>.timeline>li .timeline-image {
+        margin-left: 5px;
+        width: 65px;
+    height: 65px
+    }
+    .flight-start .fa-plane, .flight-end .fa-plane {
+    font-size: 3em;
+    }
+    .hotel-stay .fa-bed, .car-rental .fa-car {
+        font-size: 2em;
+    }
+    #div_activitiesContainer>.timeline>li .timeline-image h4 {
+    font-size: 0.65em;
+    margin-top: 7px;
+    line-height: 12px;
+        }
+
+    #div_activitiesContainer>.timeline>li.timeline-inverted>.timeline-panel >.timeline-heading>h4 {
+    font-size: 0.85em;
+
+        }
+    #div_hdrRestartGame, #div_hdrLaunchSurvey {    
+        display: none;
+    }
     #div_footerContainer {
         width:90px;
         margin: 0 auto;
     }
 
-    #div_hdrRestartGame, #div_hdrLaunchSurvey {    
+    #div_hdrRedoSearch, #div_hdrDay2Day {
         display: none;
     }
     
     #div_resultsFooterContainer {
         display: block;
     }
+    #div_resultsFooterContainer {
+        display: block;
+    }
     
+    #div_destMapBtnContainer, #div_destMapBtnBgImgContainer, #div_destMapBtnText {
+        display: none;
+    }
+        
+    #div_destinationBtnContainer , #div_destBtnBgImgContainer {
+        display: block;
+    }
 }
 
 @media screen and (min-width: 253px) {
@@ -35,6 +93,18 @@ ONE COLUMN
     }
     
 
+}
+
+@media screen and (min-width: 320px) {
+.timeline>li.flight-start>.timeline-panel, .timeline>li.flight-end>.timeline-panel, .timeline>li.hotel-stay>.timeline-panel, .timeline>li.car-rental>.timeline-panel, .timeline>li.things-to-do>.timeline-panel {
+padding: 0.25em 20px 0 100px;
+}
+div.timeline-body>a {
+font-size: 14px;
+}
+#div_activitiesContainer>.timeline>.timeline-inverted>.timeline-panel> .timeline-heading {
+padding-bottom: 0.5em;
+}
 }
 
 @media screen and (min-width: 462px) {
@@ -72,7 +142,12 @@ TWO COLUMNS
         padding-top: 72px;
         padding-bottom:65px;
     }
-
+.sub-destination h3 {
+font-size: 1.5em;
+}
+#div_itinResultsContainer {
+padding-top: 150px;
+}
     .sticky-header {
       font-size: 2.4em;
     }
@@ -82,7 +157,7 @@ TWO COLUMNS
       text-align: left;
       margin-left: -13%;
       padding-left: 19px;
-      font-size: 2.6rem;
+      font-size: 1.8rem;
     }
     
     .fixed-header {
@@ -103,18 +178,89 @@ TWO COLUMNS
       margin-top: 6%;
     }
   
-      #div_hdrRestartGame, #div_hdrLaunchSurvey {    
-      display: block;
+      #div_hdrRedoSearch, #div_hdrDay2Day {
+      display: none;
     }
     
     #div_resultsFooterContainer {
-      display: none;
+      display: block;
     }
-
+    #div_headerContentContainer {
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+    }
+    #div_bkBtn, #div_itinHdrTxt {
+    min-height: 74px;
+    padding-top: 12px;
+    }
+    #hdr_resultsFixed.fixed-header {
+        margin-left: 25%;
+        font-size: 2rem;
+    }
+    #div_activitiesContainer>.timeline>li .timeline-image h4 {
+        font-size: 0.75em;
+    }
 }
 /******************************
 DESTINATIONS SINGLE ROW
 ******************************/
+@media screen and (min-width: 768px) {
+.sub-destination h3 {
+font-size: 1.5em;
+}
+#hdr_resultsFixed.fixed-header {
+margin-left: 30%;
+}
+#div_itinResultsContainer {
+padding-top: 180px;
+}
+#div_activitiesContainer>.timeline:before {
+left: 10em;
+}
+#div_activitiesContainer>.timeline>li .timeline-image {
+left: 8em;
+    margin-left: 0px;
+    width: 75px;
+    height: 75px;
+    }
+.flight-start .fa-plane, .flight-end .fa-plane {
+    font-size: 2.5em;
+    margin-top: 0.35em;
+    margin-right: 0.1em;
+}
+
+.hotel-stay .fa-bed, .car-rental .fa-car {
+    font-size: 2.25em;
+    margin-top: 0.25em;
+    margin-right: 0.2em;
+    margin-left: 0.15em;
+    }
+
+.things-to-do .material-icons {
+    font-size: 3.25em;
+}
+#div_activitiesContainer>.timeline>li .timeline-image h4 {
+font-size: 0.95em;
+    line-height: 15px;
+}
+#div_activitiesContainer>.timeline>li.timeline-inverted>.timeline-panel {
+    left: -30%;
+}
+#div_activitiesContainer>.timeline>li.timeline-inverted>.timeline-panel {
+padding: 12px 30px 20px 20px;
+}
+    #div_activitiesContainer>.timeline>li.timeline-inverted>.timeline-panel >.timeline-heading>h4 {
+    font-size: 1.25em;
+    }
+#div_activitiesContainer>.timeline>li.timeline-inverted>.timeline-panel {
+    padding: 10px 10px 20px 10px;
+    }
+#div_activitiesContainer>.timeline>li.timeline-inverted>.timeline-panel>.timeline-body>.text-muted {
+    font-size: 1.25em;
+}
+    
+}
+
 @media screen and (min-width: 800px) {
   .title-container {
     width: 33.333%;
@@ -124,7 +270,67 @@ DESTINATIONS SINGLE ROW
   .bkBtn {
     margin-top: 6%;
   }
+  #div_hdrRedoSearch, #div_hdrDay2Day {
+      display: block;
+    }
+    
+    #div_resultsFooterContainer {
+      display: none;
+    }
 }
+@media screen and (min-width: 992px) {
+#hdr_resultsFixed.fixed-header {
+margin-left: 37%;
+}
+.flight-start .fa-plane, .flight-end .fa-plane {
+    font-size: 3.5em;
+    margin-top: 0.1em;
+    margin-right: 0.1em;
+}
+
+.hotel-stay .fa-bed, .car-rental .fa-car {
+    font-size: 2.6em;
+        margin-top: 0.2em;
+    margin-right: 0.15em;
+    margin-left: 0.15em;
+}
+.things-to-do .material-icons {
+    font-size: 3.25em;
+    margin-top: 0.075em;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+#div_activitiesContainer>.timeline>li .timeline-image {
+    left: 7em;
+    width: 100px;
+    height: 100px;
+}
+#div_activitiesContainer>.timeline>li.timeline-inverted>.timeline-panel {
+left: -20%;
+}
+.flight-start .fa-plane, .flight-end .fa-plane {
+    font-size: 4.5em;
+    margin-top: 0.2em;
+    margin-right: 0.1em;
+}
+
+.hotel-stay .fa-bed, .car-rental .fa-car {
+    font-size: 3.5em;
+}
+.things-to-do .material-icons {
+font-size: 4.25em;
+    margin-top: 0.15em;
+    }
+
+#div_activitiesContainer>.timeline>li .timeline-image h4 {
+    margin-top: 10px;
+        font-size: 1.15em;
+    line-height: 20px;
+}
+}
+
 /******************************
 THREE COLUMNS
 ******************************/
@@ -148,10 +354,10 @@ THREE COLUMNS
     
     #p_header {
       font-size: 3.2rem;
-}
+    }
     
     .bkBtn {
         /* margin: 10px 0px 0px 0px; */
     
-}
+    }
 }

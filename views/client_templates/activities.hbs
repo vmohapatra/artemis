@@ -1,0 +1,119 @@
+                    <ul id="ul_compactItin" class="timeline">
+                        <li class="timeline-inverted flight-start">
+                            <div class="timeline-image">
+                                <div class="img-circle img-responsive" style="position: relative;" >
+                                    <i class="fa fa-plane" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <!--Dynamically fill in the airport name-->
+                                    <h4>SEA <i class="fa fa-long-arrow-right"></i> {{getStartTla tlas}}</h4>
+                                    <!-- Dynamically fill in the start date-->
+                                    <h4 class="subheading">{{getDate startDate}}</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <a href="https://www.expedia.com/Flights-Search?trip=oneway&leg1=from:Seattle, WA, United States (SEA),to:{{getStartTla tlas}},departure:06/26/2017TANYT&passengers=adults:1,children:0,seniors:0,infantinlap:Y&options=cabinclass:economy&mode=search" target="_blank">
+                                        Book your flight
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+
+                        {{#each rids}}
+
+                        <li class="timeline-inverted hotel-stay">
+                            <div class="timeline-image">
+                                <div class="img-circle img-responsive" style="position: relative;" >
+                                    <i class="fa fa-bed" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <!--Dynamically fill in the destination name-->
+                                    <h4>Stay in {{getDestinationName ../this.destinations @index}}</h4>
+                                    <!-- Dynamically fill in the start date-->
+                                    <h4 class="subheading">June 26 - 30, 2017</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <a href="https://www.expedia.com/Hotel-Search?destination=Honolulu, Hawaii&latLong=21.309540,-157.861600&regionId=1488&startDate=06/26/2017&endDate=06/30/2017&_xpid=11905|1&adults=1&children=0" target="_blank">
+                                        Book your hotel
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted car-rental">
+                            <div class="timeline-image">
+                                <div class="img-circle img-responsive" style="position: relative;" >
+                                    <i class="fa fa-car" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <!--Dynamically fill in the destination name-->
+                                    <h4>Drive in {{getDestinationName ../this.destinations @index}}</h4>
+                                    <!-- Dynamically fill in the start date-->
+                                    <h4 class="subheading">June 26 - 30, 2017</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <a href="https://www.expedia.com/carsearch?locn=Honolulu, Hawaii&loc2=&date1=06/26/2017&time1=0900AM&date2=06/30/2017&time2=0900PM&_xpid=11905|1&dagv=1&subm=1&fdrp=0&ttyp=2&acop=2&rdus=10&rdct=1&styp=4" target="_blank">
+                                        Rent a car
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="timeline-inverted things-to-do" data='{{this}}'>
+                            <div class="timeline-image">
+                                <div class="img-circle img-responsive" style="position: relative;" >
+                                    <a class="page-scroll" href="#activities">
+                                        <i class="material-icons" aria-hidden="true">local_activity</i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 data='{{this}}'>
+                                    <!--Dynamically fill in the activity-->
+                                    Explore activities in&nbsp;{{getDestinationName ../this.destinations @index}}
+                                    </h4>
+                                </div>
+                                <div class="timeline-body" data='{{this}}'>
+                                <p class="text-muted">See activities in {{getDestinationName ../this.destinations @index}}<p>
+                                    <ul id="ul_activitiesPerRid_{{this}}" class="explore-activities">
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </li>
+                        {{/each}}
+
+                        <li class="timeline-inverted flight-end">
+                            <div class="timeline-image">
+                                <div class="img-circle img-responsive" style="position: relative;" >
+                                    <i class="fa fa-plane" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <!--Dynamically fill in the airport name-->
+                                    <h4>{{getEndTla tlas}} <i class="fa fa-long-arrow-right"></i> SEA</h4>
+                                    <!-- Dynamically fill in the start date-->
+                                    <h4 class="subheading"> {{getDate endDate}}</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <a href="https://www.expedia.com/Flights-Search?trip=oneway&leg1=from:{{getEndTla tlas}},to:Seattle, WA, United States (SEA),departure:06/26/2017TANYT&passengers=adults:1,children:0,seniors:0,infantinlap:Y&options=cabinclass:economy&mode=search" target="_blank">
+                                        Book your flight
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="timeline-inverted pack-your-bags">
+                            <div class="timeline-image">
+                                <h4>Pack
+                                    <br>Your
+                                    <br>Bags!</h4>
+                            </div>
+                        </li>
+                    </ul>

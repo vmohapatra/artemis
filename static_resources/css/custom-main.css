@@ -78,6 +78,18 @@ h3 {
     margin: 0;
     padding: 14px 0;
 }
+.sub-destination {
+    color: #fff;
+    width: 100%;
+    background-color: rgb(8, 8, 8);
+    padding-left: 3%;
+    padding-right: 3%;
+    opacity: 0.9;
+}
+.sub-destination h3 {
+    text-transform: none;
+    font-family: 'Open Sans', sans-serif;
+}
 /*******************************
 GENERIC ELEMENTS
 *******************************/
@@ -153,89 +165,129 @@ GENERIC ELEMENTS
 GAME PAGE FOOTER
 *******************************/
 #div_footerContainer {
-        margin: 0 auto;
-        width: 160px;
-        padding: 0 0 12px 12px;
+    margin: 0 auto;
+    width: 160px;
+    padding: 0 0 12px 12px;
 }
 /*******************************
-RESULTS PAGE HEADER
+ITIN PAGE HEADER
 *******************************/
-.resultsHeader {
-        background-color: #D6AC0A;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+.itinHeader {
+    background-color: #D6AC0A;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-#div_resultsHeaderContainer {
-        border:0px;
+#div_itinHeaderContainer {
+    border:0px;
 }
 #div_headerContentContainer, #div_navBtnContainer {
-        min-height: 50px;
+    min-height: 50px;
 }
 #div_navBtnContainer.row {
-        margin-left: 0px;
-        margin-right: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
 }
-#div_backToImgIcon {
-        background-image: url('../img/back.png');
-        margin: 9px 0 0 -9px;
+#div_backToSearchIcon {
+    background-image: url('/static/images/back.png');
+    margin: 9px 0 0 -9px;
 }
 #div_hdrRefreshIcon, #div_ftrRefreshIcon {
-        background-image: url('../img/restart.png');
+    background-image: url('/static/images/restart.png');
 }
-#div_hdrSurveyIcon, #div_ftrSurveyIcon {
-        background-image: url('../img/feedback.png');
+#div_hdrDay2DayIcon, #div_ftrDay2DayIcon {
+    background-image: url('/static/images/feedback.png');
 }
 .navBtn {
-        min-height: 74px;
-        padding-top:16px;
-        /* padding-bottom:16px; */
-        cursor: pointer;
+    min-height: 74px;
+    padding-top:16px;
+    /* padding-bottom:16px; */
+    cursor: pointer;
 }
 .resultBtnIcon {
-        height: 22px;
-        width: 22px;
-        margin: auto;
+    height: 22px;
+    width: 22px;
+    margin: auto;
 }
 .resultBtn {
-        margin: 0;
-        color: #000000;
+    margin: 0;
+    color: #000000;
 }
 .bkBtn {
-        /* padding-top: 0.6%; */
-        cursor: pointer;
+    /* padding-top: 0.6%; */
+    cursor: pointer;
 }
 #hdr_resultsFixed.fixed-header {
-        color: black;        
-        opacity: 0.7;
-        width: 158%;
-        text-align: center;
+    color: black;
+    opacity: 0.7;
+    width: 158%;
+    text-align: center;
+    text-transform: none;
 }
-#div_hdrLaunchSurvey, #div_ftrLaunchSurvey {
-        background-color: #FFDE32;
+#div_hdrDay2Day, #div_ftrDay2Day {
+    background-color: #FFDE32;
 }
 
-#div_hdrSurveyTxt, #div_hdrRefreshTxt {
-        font-size: .9em;
-        padding-top: 2px;
+#div_hdrDay2DayTxt, #div_hdrRefreshTxt {
+    font-size: .9em;
+    padding-top: 5px;
 }
 
 /*******************************
 RESULTS PAGE CONTENT
 *******************************/
 #div_destinationResultContainer {
-        background-color: #555;
+    background-color: #555;
 }
-#div_resultsContentContainer, #div_headerContentContainer {
-        max-width: 940px;
-        min-width: 320px;
+#div_itinResultsContainer, #div_headerContentContainer {
+    max-width: 940px;
+    min-width: 320px;
 }
-
+#div_itinResultsContainer {
+    padding-left: 5em;
+    padding-right: 5em;
+}
+.flight-start .fa-plane, .flight-end .fa-plane {
+    font-size: 3.5em;
+    margin-top: 0.11em;
+    margin-right: 0.1em;
+}
+.hotel-stay .fa-bed, .car-rental .fa-car {
+    font-size: 2.75em;
+    margin-top: 0.25em;
+    margin-right: 0.2em;
+    margin-left: 0.2em;
+}
+#div_activitiesContainer>.timeline>li.timeline-inverted>.timeline-panel >.timeline-heading>h4 {
+text-transform : none;
+line-height: 1.5;
+}
+ul.explore-activities, ul.explore-activities li {
+padding: 5px;
+}
+.activity-tile {
+    min-height: 3em;
+    min-width: 4em;
+    display: inline-block;
+    background-size: cover;
+    background-position: center;
+    margin-top: 5px;
+    width: 10%;
+}
+.activity-title {
+    display: inline-block;
+    margin-left: 5px;
+    margin-top: 1em;
+    float: right;
+    width: 75%;
+}	
 /*******************************
 RESULTS PAGE FOOTER
 *******************************/
 #div_resultsFooterContainer    {
-        /*background-color: rgba(85, 170, 255,1);        */
-        background-color: #D6AC0A;
-        border: 0px;
+    /*background-color: rgba(85, 170, 255,1);*/
+    background-color: #D6AC0A;
+    border: 0px;
 }
+/**************************
+***************************/
 
 
